@@ -1,0 +1,73 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Emergency Incident</title>
+  <style>
+    body { margin:0; padding:0; font-family: Arial, Helvetica, sans-serif; background-color:#f4f4f6; }
+    .container { max-width:600px; margin:24px auto; background:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.08); }
+    .header { padding:20px; background:#dc2626; color:#ffffff; }
+    .header h1 { margin:0; font-size:20px; font-weight:600; }
+    .content { padding:20px; color:#111827; line-height:1.45; }
+    .details { background:#fef2f2; border:1px solid #fecaca; padding:14px; border-radius:6px; margin:12px 0; }
+    .details p { margin:6px 0; }
+    .cta { padding:20px; text-align:center; }
+    .btn {
+      display:inline-block;
+      text-decoration:none;
+      padding:12px 20px;
+      border-radius:8px;
+      font-weight:600;
+      font-size:16px;
+      color:#ffffff;
+      background:#b91c1c;
+    }
+    .muted { color:#6b7280; font-size:13px; }
+    .footer { padding:14px 20px; font-size:13px; color:#6b7280; background:#fbfbfd; }
+    a { color:#dc2626; }
+  </style>
+</head>
+<body>
+  <!-- Preheader -->
+  <div style="display:none; max-height:0; overflow:hidden; opacity:0;">
+    Urgent: A nearby emergency incident needs your attention.
+  </div>
+
+  <div class="container" role="article" aria-label="Emergency incident notification">
+    <div class="header">
+      <h1>🚨 Emergency Response — Nearby Incident</h1>
+    </div>
+
+    <div class="content">
+      <p>Hello <strong th:text="${volunteerName}">Volunteer Name</strong>,</p>
+
+      <p>An emergency incident was reported near your location. Please review the details below and accept if you can respond.</p>
+
+      <div class="details">
+        <p><strong>Location:</strong> <span th:text="${incidentLocation}">Incident Location</span></p>
+        <p><strong>Reported at:</strong> <span th:text="${incidentTime}">Incident Time</span></p>
+      </div>
+
+      <div class="cta">
+        <a class="btn" th:href="${acceptLink}" target="_blank" rel="noopener noreferrer" role="button">Accept Request</a>
+      </div>
+
+      <p class="muted">If you are not available, please ignore this email.</p>
+
+      <p style="margin-top:5px;">
+        <a th:href="${mapLink}">Open location in map</a>
+      </p>
+    </div>
+
+    <div class="footer">
+      <div style="margin-bottom:6px;"><strong>ResQMitra</strong></div>
+      <div class="muted">
+        Emergency Response Coordination Team<br>
+        <small>If you think this is an error, please contact support at 
+        <a th:href="'mailto:' + ${supportEmail}" th:text="${supportEmail}">support@example.com</a>.</small>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
